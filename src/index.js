@@ -1,9 +1,16 @@
-var self = require('sdk/self');
+var buttons = require('sdk/ui/button/action');
+var tabs = require('sdk/tabs');
 
-// a dummy function, to show how tests work.
-// to see how to test this function, look at test/test-index.js
-function dummy(text, callback) {
-  callback(text);
+var button = buttons.ActionButton({
+    id: 'mediathread-link',
+    label: 'Collect with Mediathread',
+    icon: {
+        '16': './img/icon-16.png',
+        '32': './img/icon-32.png',
+        '64': './img/icon-64.png'
+    },
+    onClick: handleClick
+});
+
+function handleClick(state) {
 }
-
-exports.dummy = dummy;
