@@ -1,6 +1,8 @@
 var buttons = require('sdk/ui/button/action');
 var tabs = require('sdk/tabs');
-var data = require("sdk/self").data;
+var data = require('sdk/self').data;
+var { attach, detach } = require('sdk/content/mod');
+var Style = require('sdk/stylesheet/style').Style;
 
 var button = buttons.ActionButton({
     id: 'mediathread-link',
@@ -13,9 +15,13 @@ var button = buttons.ActionButton({
     onClick: handleClick
 });
 
+var style = Style({
+    uri: './css/sherd_styles.css'
+});
+
 function handleClick(state) {
+    attach(style, tabs.activeTab);
     tabs.activeTab.attach({
-        contentStyleFile: data.url('./css/sherd_styles.css'),
         contentScriptFile: [
             data.url('./lib/jquery-2.1.4.min.js'),
             data.url('./lib/URI.js'),
