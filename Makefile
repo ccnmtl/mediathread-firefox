@@ -2,10 +2,10 @@ test: node_modules
 	npm test
 
 jshint: node_modules/jshint/bin/jshint
-	./node_modules/jshint/bin/jshint src/*.js src/**/*.js test/*.js
+	./node_modules/jshint/bin/jshint src/*.js data/src/**/*.js test/*.js
 
 jscs: node_modules/jscs/bin/jscs
-	./node_modules/jscs/bin/jscs src/*.js src/**/*.js test/*.js
+	./node_modules/jscs/bin/jscs src/*.js data/src/**/*.js test/*.js
 
 node_modules:
 	npm install
