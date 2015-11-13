@@ -1,0 +1,15 @@
+{
+  "title": "Mediathread",
+  "name": "mediathread-firefox",
+  "version": "0.0.1",
+  "description": "Find assets to analyze in Mediathread.",
+  "main": "index.js",
+  "author": "Columbia University's Center for Teaching and Learning",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "license": "GPL-2.0+",
+  "keywords": [
+    "jetpack"
+  ]
+}
