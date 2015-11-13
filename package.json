@@ -3,7 +3,7 @@
   "name": "mediathread-firefox",
   "version": "0.0.1",
   "description": "Find assets to analyze in Mediathread.",
-  "main": "index.js",
+  "main": "src/index.js",
   "icon": "data/img/icon-128.png",
   "author": "Columbia University's Center for Teaching and Learning",
   "engines": {
