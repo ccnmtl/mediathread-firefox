@@ -12,5 +12,8 @@
   "license": "GPL-2.0+",
   "keywords": [
     "jetpack"
-  ]
+  ],
+  "jshintConfig": {
+    "moz": true
+  }
 }
