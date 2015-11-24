@@ -1,0 +1,4 @@
+2015-11-25  Nik Nyby  <nnyby@columbia.edu>
+
+	* Move initial ajax request into the privileged code context
+	to avoid CSP error on Flickr.
