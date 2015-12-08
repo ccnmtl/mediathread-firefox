@@ -16,7 +16,7 @@ var button = buttons.ActionButton({
 });
 
 var style = Style({
-    uri: './css/sherd_styles.css'
+    uri: './css/mediathread_collect.css'
 });
 
 function handleClick(state) {

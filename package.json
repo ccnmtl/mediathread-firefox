@@ -13,6 +13,10 @@
   "keywords": [
     "jetpack"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccnmtl/mediathread-firefox"
+  },
   "jshintConfig": {
     "moz": true
   }
