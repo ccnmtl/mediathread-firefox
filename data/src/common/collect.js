@@ -87,21 +87,19 @@ window.MediathreadCollect = {
         M.forms[form_api](obj,form,ready,doc);
         return form;
     },/*obj2form*/
-    'addField': function(name,value,form,doc) {
+    'addField': function(name, value, form, doc) {
         var span = doc.createElement('span');
         var item = doc.createElement('input');
+        var $item = $(item);
         if (name === 'title') {
-            item.type = 'text';
-            //IE7 doesn't allow setAttribute here, mysteriously
-            item.className = 'sherd-form-title';
+            $item.attr('type', 'text');
+            $item.addClass('sherd-form-title');
         } else {
-            item.type = 'hidden';
+            $item.attr('type', 'hidden');
         }
-        item.name = name;
-        ///Ffox bug: this must go after item.type=hidden or not set correctly
-        item.value = value;
-        //form.appendChild(span);
-        form.appendChild(item);
+        $item.attr('name', name);
+        $(item).val(value);
+        $(form).append($item);
         return item;
     },/*addField*/
     'forms': {
@@ -152,7 +150,7 @@ window.MediathreadCollect = {
                 JSON.stringify(
                     obj,
                     function(key, value) {
-                        if (typeof value == 'object' && value.tagName) {
+                        if (typeof value === 'object' && value.tagName) {
                             return '';
                         } else {
                             return value;
@@ -207,12 +205,12 @@ window.MediathreadCollect = {
             var M = MediathreadCollect;
             function go(run_func) {
                 M.g = new M.Interface(host_url);
-                if (run_func == 'onclick') {
+                if (run_func === 'onclick') {
                     M.g.findAssets();
                 }
             }
             /*ffox 3.6+ and all other browsers:*/
-            if (document.readyState != 'complete') {
+            if (document.readyState !== 'complete') {
                 /*future, auto-embed use-case.
                   When we do this, we need to support ffox 3.5-
                 */
@@ -384,7 +382,7 @@ window.MediathreadCollect = {
                 }
             });
             for(var data in metaData) {
-                if (typeof metaData[data] == 'object') {
+                if (typeof metaData[data] === 'object') {
                     var flatMetaData = '';
                     for(var str in metaData[data]) {
                         if (flatMetaData === '') {
@@ -416,7 +414,7 @@ window.MediathreadCollect = {
     'find_by_attr': function (jq,tag,attr,val,par) {
         if (/^1.0/.test(jq.prototype.jquery)) {
             return jq(tag,par).filter(function(elt) {
-                return (elt.getAttribute && elt.getAttribute(attr) == val);
+                return (elt.getAttribute && elt.getAttribute(attr) === val);
             });
         } else {
             return jq(tag + '[' + attr + '=' + val + ']', par);
@@ -461,7 +459,7 @@ window.MediathreadCollect = {
         };
         var t = doc.createElement(tag);
         t.setAttribute('class',className);
-        if (typeof style == 'string') {
+        if (typeof style === 'string') {
             t.setAttribute('style', style);
             setStyle(t, style);
         } else for (var a in style) {
@@ -476,7 +474,7 @@ window.MediathreadCollect = {
         if (children) {
             for (var i = 0; i <children.length; i++) {
                 var c = children[i];
-                if (typeof c == 'string') {
+                if (typeof c === 'string') {
                     t.appendChild(doc.createTextNode(c));
                 } else {
                     t.appendChild(c);
@@ -598,7 +596,7 @@ window.MediathreadCollect = {
             var merge_with = false;
             if (
                 asset.page_resource &&
-                    asset != self.assets_found[0] &&
+                    asset !== self.assets_found[0] &&
                     self.assets_found.length-self.page_resource_count < 2
             ) {
                 // if there's only one asset on the page and rest are
@@ -884,9 +882,6 @@ window.MediathreadCollect = {
             M.connect(comp.close, 'click', function(evt) {
                 $('.sherd-analyzer').remove();
                 comp.window.style.display = 'none';
-                if (window.IEVideo) {
-                    $(window.IEVideo).css('display','block');
-                }
                 if (MediathreadCollect.options.decorate) {
                     comp.tab.style.display = 'block';
                 }
@@ -936,7 +931,7 @@ window.MediathreadCollect = {
 
                 asset.sources[asset.primary_type] = uri.href();
             }
-            if (!asset) {
+            if (!asset || assetUrl === 'http://undefined') {
                 return;
             }
             var doc = comp.ul.ownerDocument;
@@ -981,10 +976,7 @@ window.MediathreadCollect = {
                         type: 'button',
                         value: 'Collect'
                     });
-                if (!window.IEVideo) {
-                    //the continue button is not working in IE right now
-                    $(form).append(form.submitButton2);
-                }
+                $(form).append(form.submitButton2);
                 $(form).append(form.submitButton);
                 $(form.submitButton).click(function() {
                     var action = self.unHttpsTheLink(
@@ -1181,7 +1173,7 @@ window.MediathreadCollect = {
             }
             if (comp.ul) {
                 if (comp.ul.firstChild !== null &&
-                    comp.ul.firstChild.innerHTML == o.message_no_assets) {
+                    comp.ul.firstChild.innerHTML === o.message_no_assets) {
                     $(comp.ul.firstChild).remove();
                 }
                 comp.ul.appendChild(li);
@@ -1294,8 +1286,7 @@ window.MediathreadCollect = {
                 $(iframe).load(function(evt) {
                     ++done;
                     $(comp.saveAllButton).text(
-                        'Saved ' + done + ' of ' + todo + '...'
-                    );
+                        'Saved ' + done + ' of ' + todo + '...');
 
                     var frmid = String(this.id).slice(
                         0, -('-iframesubmit'.length));
@@ -1331,40 +1322,3 @@ if (MediathreadCollectOptions.user_status) {
     MediathreadCollect.update_user_status(
         MediathreadCollectOptions.user_status);
 }
-
-$.ajax({
-    url: MediathreadCollectOptions.user_url,
-    dataType: 'json',
-    crossDomain: true,
-    cache: false,
-    xhrFields: {
-        withCredentials: true
-    },
-    success: function(d) {
-        if ('flickr_apikey' in d) {
-            MediathreadCollect.options.flickr_apikey = d.flickr_apikey;
-        }
-        if ('youtube_apikey' in d) {
-            MediathreadCollect.options.youtube_apikey = d.youtube_apikey;
-        }
-
-        if (d.logged_in === true && d.course_selected === true) {
-            // Start the main plugin code
-            MediathreadCollect.runners.jump(
-                MediathreadCollectOptions.host_url, true);
-        } else if (d.logged_in === true && d.course_selected === false) {
-            alert(
-                'You\'re logged in to mediathread at ' +
-                    MediathreadCollectOptions.host_url +
-                    ', now select a course to use the browser extension.');
-        } else {
-            alert(
-                'Log in to mediathread (' +
-                    MediathreadCollectOptions.host_url +
-                    ') and select a course!');
-        }
-    },
-    error: function(d) {
-        console.error('#', d);
-    }
-});
