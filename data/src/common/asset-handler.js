@@ -1,69 +1,11 @@
 var assetHandler = {
     objects_and_embeds: {
         players: {
-            'realplayer': {
-                /*NOTE: realplayer plugin works in non-IE only WITH <embed>
-                  whereas in IE it only works with <object>
-                  efforts to GetPosition() need to take this into
-                  consideration
-                */
-                match: function(eo) {
-                    return (
-                        ('object' == eo.tagName.toLowerCase()) ?
-                            (eo.classid ==
-                             'clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA' &&
-                             'obj') || null :
-                            (String(eo.type) ==
-                             'audio/x-pn-realaudio-plugin' && 'emb') ||
-                            null);
-                },
-                asset: function(emb, match, context, index,
-                                optionalCallback) {
-                    var abs = MediathreadCollect.absolute_url;
-                    var rv = {
-                        html: emb,
-                        primary_type: 'realplayer',
-                        sources: {}
-                    };
-                    if (match === 'emb') {
-                        rv.sources.realplayer = abs(
-                            emb.src, context.document);
-                    } else if (match === 'obj') {
-                        var src = $('param[name=src],param[name=SRC]',emb);
-                        if (src.length) {
-                            rv.sources.realplayer = abs(src.get(0).value,
-                                                        context.document);
-                        } else {
-                            return rv;//FAIL
-                        }
-                    }
-
-                    if (typeof emb.DoPlay != 'undefined') {
-                        rv.sources['realplayer-metadata'] = 'w' + (
-                            emb.GetClipWidth() || emb.offsetWidth
-                        ) + 'h' + (emb.GetClipHeight() || emb.offsetHeight);
-
-                        rv.sources.title = emb.GetTitle() || undefined;
-                        if (rv.sources.title) {//let's try for the rest
-                            rv.metadata = {
-                                'author': [emb.GetAuthor() || undefined],
-                                'copyright': [emb.GetCopyright() ||
-                                              undefined]
-                            };
-                        }
-                    } else {
-                        rv.sources['realplayer-metadata'] =
-                            'w' + emb.width + 'h' + emb.height;
-                    }
-
-                    return rv;
-                }
-            },/*end realplayer embeds*/
             'youtube': {
                 match: function(emb) {
                     ///ONLY <EMBED>
                     return String(emb.src).match(
-                            /^http:\/\/www.youtube.com\/v\/([\w\-]*)/);
+                            /^https:\/\/www.youtube.com\/v\/([\w\-]*)/);
                 },
                 asset: function(emb, match, context,
                                 index, optionalCallback) {
@@ -81,7 +23,7 @@ var assetHandler = {
                         primary_type: 'youtube',
                         label: 'youtube video',
                         sources: {
-                            'youtube': 'http://www.youtube.com/v/' +
+                            'youtube': 'https://www.youtube.com/v/' +
                                 VIDEO_ID + '?enablejsapi=1&fs=1',
                             'gapi': 'https://www.googleapis.com/' +
                                 'youtube/v3/videos?id=' + VIDEO_ID
@@ -173,7 +115,7 @@ var assetHandler = {
                     };
                     var c = obj.getConfig();
                     var pcfg = obj.getPluginConfig('http');
-                    if (item.type == 'rtmp') {
+                    if (item.type === 'rtmp') {
                         // ensure that mp4 rtmp files contain the
                         // needed mp4: prefix so that they will play
                         // properly in flowplayer;
@@ -271,7 +213,7 @@ var assetHandler = {
                                 sources.thumb = url;
                                 sources.poster = url;
                                 continue;
-                            } else if (!clip.type || clip.type == 'image') {
+                            } else if (!clip.type || clip.type === 'image') {
                                 if (/\.flv$/.test(url)) {
                                     clip = p;
                                     type = 'flv';
@@ -397,7 +339,7 @@ var assetHandler = {
                     // kaltura & vimeo use the same classid,
                     // apparently vimeo was built off kaltura?
                     return (
-                        (objemb.classid ==
+                        (objemb.classid ===
                          'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' &&
                          movie.val().search('kaltura') > -1) ||
                             (String(objemb.type)
@@ -455,7 +397,7 @@ var assetHandler = {
             'quicktime': {
                 match: function(objemb) {
                     return (
-                        objemb.classid ==
+                        objemb.classid ===
                             'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B' ||
                             String(objemb.type).match(/quicktime/) !==
                             null ||
@@ -490,7 +432,7 @@ var assetHandler = {
                         'param[name=movie],param[name=MOVIE]');
 
                     return (
-                        (objemb.classid ==
+                        (objemb.classid ===
                          'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' &&
                          movie.val().search('moogaloop') > -1) ||
                             (String(objemb.type)
@@ -637,7 +579,7 @@ var assetHandler = {
                                     dim.mode = 'y';
                                     return walktiles('y');
                                 case 'y':
-                                    if (dim.mode!='tilegrp') {
+                                    if (dim.mode !== 'tilegrp') {
                                         ++dim.tilegrp;
                                         dim.mode='y';
                                         return walktiles('tilegrp');
@@ -876,7 +818,7 @@ var assetHandler = {
             };
             for (var i = 0; i < frms.length; i++) {
                 var vMatch = String(frms[i].src)
-                    .match(/^http:\/\/www.youtube.com\/embed\/([\w\-]*)/);
+                    .match(/^https:\/\/www.youtube.com\/embed\/([\w\-]*)/);
                 if (vMatch && vMatch.length > 1) {
                     MediathreadCollect.assethandler
                         .objects_and_embeds.players
@@ -1044,7 +986,7 @@ var assetHandler = {
             var unapi = $('abbr.unapi-id');
             // must find one, or it's not a page resource, and
             // we won't know what asset to connect to
-            if (unapi.length == 1) {
+            if (unapi.length === 1) {
                 var server = false;
                 $('link').each(function() {
                     if (this.rel === 'unapi-server') {
@@ -1079,7 +1021,7 @@ var assetHandler = {
                             $('title',pb).each(function() {
                                 var titleType = $(
                                     'titleType', this.parentNode).text();
-                                if (titleType == 'Element' ||
+                                if (titleType === 'Element' ||
                                     document.title.indexOf(
                                         this.firstChild.data) > -1
                                    ) {
@@ -1177,7 +1119,7 @@ var assetHandler = {
             var oembed_link = false;
             $('link').each(function() {
                 //jQuery 1.0 compatible
-                if (this.type == 'application/json+oembed') {
+                if (this.type === 'application/json+oembed') {
                     oembed_link = this;
                 }
             });
