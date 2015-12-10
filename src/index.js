@@ -28,7 +28,8 @@ function handleClick(state) {
             data.url('./src/common/settings.js'),
             data.url('./src/common/host-handler.js'),
             data.url('./src/common/asset-handler.js'),
-            data.url('./src/common/collect.js')
+            data.url('./src/common/collect.js'),
+            data.url('./src/init.js')
         ]
     });
 }
