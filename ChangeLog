@@ -1,3 +1,8 @@
+2015-12-17  Nik Nyby  <nnyby@columbia.edu>
+
+	* Fixed bug where popup window when clicking "Collect"
+	was empty.
+
 2015-12-14  Nik Nyby  <nnyby@columbia.edu>
 
 	* Fix host url messaging.
