@@ -34,7 +34,7 @@ var collectPopupClickHandler = function(form, me, $buttonAsset, host_url) {
         alertSaved.prepend(alertClose);
         sherdOverlay.append(alertSaved);
         alertSaved.fadeIn(500, function() {
-            var btn = window.button_asset;
+            var btn = $buttonAsset;
             btn.attr('value', 'Collected');
             btn.off();
             btn.css({

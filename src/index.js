@@ -39,7 +39,7 @@ function handleClick(state) {
     worker.port.on('collect', function(payload) {
         var panel = Panel({
             width: 400,
-            height: 350,
+            height: 400,
             contentURL: self.data.url('./collect-popup/index.html'),
             contentStyleFile: self.data.url('./collect-popup/style.css'),
             contentScriptFile: [
