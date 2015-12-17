@@ -26,6 +26,7 @@ function handleClick(state) {
         contentScriptFile: [
             self.data.url('./lib/jquery-2.1.4.min.js'),
             self.data.url('./lib/URI.js'),
+            self.data.url('./src/collect-panel.js'),
             self.data.url('./src/common/settings.js'),
             self.data.url('./src/common/host-handler.js'),
             self.data.url('./src/common/asset-handler.js'),
