@@ -13,17 +13,18 @@ var collectPopupClickHandler = function(form, me, $buttonAsset, host_url) {
         var collectionUrl =
             me.unHttpsTheLink(
                 host_url.split('save')[0] + 'asset/');
-        var alertSaved = $(
+        var $alertSaved = $(
             '<div class="alert-saved">' +
                 '<span style="font-weight:bold">' +
                 'Success.</span> Your item has been ' +
                 'successfully added to your ' +
-                '<a href="' + collectionUrl +
-                '">Mediathread collection</a>.</div>');
+                '<a>Mediathread collection</a>.</div>');
+        var $link = $alertSaved.find('a');
+        $link.attr('href', collectionUrl);
         var alertClose = $(
             '<div class="alert-close">X</div>');
 
-        alertSaved.css({
+        $alertSaved.css({
             'top': alertSavedMarginTop + 'px',
             'left': alertSavedMarginLeft + 'px'
 
@@ -31,9 +32,9 @@ var collectPopupClickHandler = function(form, me, $buttonAsset, host_url) {
         alertClose.click(function() {
             $(this).parent().remove();
         });
-        alertSaved.prepend(alertClose);
-        sherdOverlay.append(alertSaved);
-        alertSaved.fadeIn(500, function() {
+        $alertSaved.prepend(alertClose);
+        sherdOverlay.append($alertSaved);
+        $alertSaved.fadeIn(500, function() {
             var btn = $buttonAsset;
             btn.attr('value', 'Collected');
             btn.off();
