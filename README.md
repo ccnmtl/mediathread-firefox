@@ -25,8 +25,10 @@ and uploading it to github.
   it in the review queue.
 * Change the `name` attribute in `package.json` to
   "mediathread-firefox-prerelease".
-* Run the `jpm sign --api-key KEY --api-secret SECRET` command. This will
-  create a signed xpi and upload it to AMO as an "unlisted" extension.
-  Then you'll find a `mediathread-x.x.x-fx.xpi` file in the current
+* Run the `jpm sign --api-key KEY --api-secret SECRET` command. You can get
+  the key and secret strings
+  [here](https://addons.mozilla.org/en-US/developers/addon/api/key/).
+  This will create a signed xpi and upload it to AMO as an "unlisted"
+  extension. Then you'll find a `mediathread-x.x.x-fx.xpi` file in the current
   directory. Upload this file to the release tag in github -- FF 43+
   will allow it to be installed.
