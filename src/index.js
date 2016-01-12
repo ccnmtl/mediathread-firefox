@@ -24,7 +24,7 @@ function handleClick(state) {
     attach(style, tabs.activeTab);
     var worker = tabs.activeTab.attach({
         contentScriptFile: [
-            self.data.url('./lib/jquery-2.1.4.min.js'),
+            self.data.url('./lib/jquery-2.2.0.min.js'),
             self.data.url('./lib/URI.js'),
             self.data.url('./src/collect-panel.js'),
             self.data.url('./src/common/settings.js'),
@@ -43,7 +43,7 @@ function handleClick(state) {
             contentURL: self.data.url('./collect-popup/index.html'),
             contentStyleFile: self.data.url('./collect-popup/style.css'),
             contentScriptFile: [
-                self.data.url('./lib/jquery-2.1.4.min.js'),
+                self.data.url('./lib/jquery-2.2.0.min.js'),
                 self.data.url('./collect-popup/popup.js')
             ]
         });
