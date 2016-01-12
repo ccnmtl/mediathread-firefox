@@ -1,5 +1,7 @@
+var hostUrl = 'https://mediathread.ccnmtl.columbia.edu/';
+
 $.ajax({
-    url: MediathreadCollectOptions.user_url,
+    url: hostUrl + '/accounts/is_logged_in/',
     dataType: 'json',
     crossDomain: true,
     cache: false,
@@ -7,8 +9,6 @@ $.ajax({
         withCredentials: true
     },
     success: function(d) {
-        var hostUrl = MediathreadCollectOptions.host_url.replace(
-                /\/save\/$/, '');
         if ('flickr_apikey' in d) {
             MediathreadCollect.options.flickr_apikey = d.flickr_apikey;
         }
@@ -18,8 +18,7 @@ $.ajax({
 
         if (d.logged_in === true && d.course_selected === true) {
             // Start the main plugin code
-            MediathreadCollect.runners.jump(
-                MediathreadCollectOptions.host_url, true);
+            MediathreadCollect.runners.jump(hostUrl, true);
         } else if (d.logged_in === true && d.course_selected === false) {
             alert(
                 'You\'re logged in to Mediathread at ' +
