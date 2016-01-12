@@ -1,3 +1,7 @@
+2016-01-12  Nik Nyby  <nnyby@columbia.edu>
+
+	* Update jQuery to 2.2.0.
+
 2015-12-18  Nik Nyby  <nnyby@columbia.edu>
 
 	* Made jQuery changes based on an AMO reviewer's feedback.
