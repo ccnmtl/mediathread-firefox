@@ -1,6 +1,6 @@
 var buttons = require('sdk/ui/button/action');
 var tabs = require('sdk/tabs');
-var { attach, detach } = require('sdk/content/mod');
+var {attach, detach} = require('sdk/content/mod');
 var Style = require('sdk/stylesheet/style').Style;
 var self = require('sdk/self');
 var Panel = require('sdk/panel').Panel;
@@ -27,7 +27,6 @@ function handleClick(state) {
             self.data.url('./lib/jquery-2.2.0.min.js'),
             self.data.url('./lib/URI.js'),
             self.data.url('./src/collect-panel.js'),
-            self.data.url('./src/common/settings.js'),
             self.data.url('./src/common/host-handler.js'),
             self.data.url('./src/common/asset-handler.js'),
             self.data.url('./src/common/collect.js'),
