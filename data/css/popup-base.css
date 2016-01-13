@@ -2,6 +2,10 @@ body {
     background-color: white;
 }
 
+p {
+    text-align: center;
+}
+
 h2 {
     font-family: arial;
     font-weight: 100;

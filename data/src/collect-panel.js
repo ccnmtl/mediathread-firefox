@@ -10,9 +10,7 @@ var collectPopupClickHandler = function(form, me, $buttonAsset, host_url) {
              .width() / 2) - (535 * 0.5);
         var alertSavedMarginTop =
             ($(window).height() / 2) - 100;
-        var collectionUrl =
-            me.unHttpsTheLink(
-                host_url.split('save')[0] + 'asset/');
+        var collectionUrl = host_url.replace(/\/save\/$/, '') + '/asset/';
         var $alertSaved = $(
             '<div class="alert-saved">' +
                 '<span style="font-weight:bold">' +
