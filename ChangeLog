@@ -1,3 +1,10 @@
+2016-01-14  Nik Nyby  <nnyby@columbia.edu>
+
+	* Resolved an error that occured when collecting assets
+	on Flickr.
+	* Fixed an error where settings.js was getting included
+	when it's been deprecated.
+
 2016-01-12  Nik Nyby  <nnyby@columbia.edu>
 
 	* Update jQuery to 2.2.0.

@@ -4,8 +4,7 @@ var {attach, detach} = require('sdk/content/mod');
 var Style = require('sdk/stylesheet/style').Style;
 var self = require('sdk/self');
 var Panel = require('sdk/panel').Panel;
-var Request = require("sdk/request").Request;
-var notifications = require("sdk/notifications");
+var Request = require('sdk/request').Request;
 
 var style = Style({
     uri: './css/mediathread_collect.css'
@@ -75,7 +74,8 @@ var handleClick = function() {
                 panel = Panel({
                     width: 400,
                     height: 80,
-                    contentURL: self.data.url('./login-popup/select-course.html'),
+                    contentURL: self.data.url(
+                        './login-popup/select-course.html'),
                     contentStyleFile: self.data.url('./css/popup-base.css')
                 });
                 panel.show();
@@ -90,7 +90,7 @@ var handleClick = function() {
             }
         }
     }).get();
- };
+};
 
 var button = buttons.ActionButton({
     id: 'mediathread-link',
