@@ -27,7 +27,6 @@ function handleClick(state) {
             self.data.url('./lib/jquery-2.2.0.min.js'),
             self.data.url('./lib/URI.js'),
             self.data.url('./src/collect-panel.js'),
-            self.data.url('./src/common/settings.js'),
             self.data.url('./src/common/host-handler.js'),
             self.data.url('./src/common/asset-handler.js'),
             self.data.url('./src/common/collect.js'),
