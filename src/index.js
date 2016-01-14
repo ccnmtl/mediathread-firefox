@@ -1,6 +1,6 @@
 var buttons = require('sdk/ui/button/action');
 var tabs = require('sdk/tabs');
-var { attach, detach } = require('sdk/content/mod');
+var {attach, detach} = require('sdk/content/mod');
 var Style = require('sdk/stylesheet/style').Style;
 var self = require('sdk/self');
 var Panel = require('sdk/panel').Panel;
