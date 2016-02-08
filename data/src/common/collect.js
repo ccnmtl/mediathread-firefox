@@ -12,10 +12,6 @@ window.MediathreadCollect = {
             window.MediathreadCollect.user_status[a] = userStatus[a];
         }
 
-        if (window.console) {
-            window.console.log(userStatus);
-        }
-
         if ('youtube_apikey' in userStatus) {
             window.MediathreadCollect.options.youtube_apikey =
                 userStatus.youtube_apikey;
@@ -245,9 +241,6 @@ window.MediathreadCollect = {
     'hasBody': function(doc) {
         return (doc.body && 'body' === doc.body.tagName.toLowerCase());
     },
-    'clean': function(str) {
-        return str.replace(/^\s+/,'').replace(/\s+$/,'').replace(/\s+/,' ');
-    },
     'absoluteUrl': function(maybe_local_url, doc, maybe_suffix) {
         maybe_local_url = (maybe_suffix || '') + maybe_local_url;
         if (/:\/\//.test(maybe_local_url)) {
@@ -443,8 +436,6 @@ window.MediathreadCollect = {
                 if (merge_with.html_id) {
                     me.ASYNC.remove(merge_with);
                     delete merge_with.html_id;//so it doesn't over-write asset
-                } else if (window.console) {
-                    window.console.log('ERROR: No html_id on merge-item');
                 }
 
                 //jQuery 1.0compat (for drupal)
@@ -485,9 +476,6 @@ window.MediathreadCollect = {
                     after_merge.html_id = me.assetHtmlID(after_merge);
                     me.ASYNC.display(after_merge, /*index*/assets.length - 1);
                     window.MediathreadCollect.assetBucket = assets;
-                    if (window.console) {
-                        window.console.log(assets);
-                    }
                 }
             }
 
