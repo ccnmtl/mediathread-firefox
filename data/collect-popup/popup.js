@@ -3,6 +3,14 @@ $(document).ready(function() {
         var $form = $(form);
         $form.find('input.cont').remove();
         $form.find('input.analyze').remove();
+
+        var $titleInput = $form.find('input.sherd-form-title');
+        var val = $titleInput.val();
+        if (val === '' || val === null) {
+            var url = $form.find('img.sherd-image').attr('src');
+            $titleInput.val(url.split('/').pop());
+        }
+
         $form.append('<input type="hidden" value="cont" name="button">');
         $form.append('<button id="submit-input" class="btn-primary" ' +
                      'type="submit">Save</button>');
