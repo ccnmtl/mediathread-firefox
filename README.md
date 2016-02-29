@@ -20,7 +20,7 @@ as a backup method. Starting with Firefox 43, all extensions need to be
 self-distribution a little more complicated than just making an XPI file
 and uploading it to github.
 
-* Run `jpm xpi`, and upload the created xpi to
+* Run `make clean && jpm xpi`, and upload the created xpi to
   https://addons.mozilla.org/en-US/developers/addon/mediathread to put
   it in the review queue.
 * Change the `name` attribute in `package.json` to
