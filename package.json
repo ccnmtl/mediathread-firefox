@@ -1,10 +1,10 @@
 {
   "title": "Mediathread",
   "name": "mediathread-firefox",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Find assets to analyze in Mediathread.",
   "main": "src/index.js",
-  "icon": "data/img/icon-128.png",
+  "icon": "resource://@mediathread-firefox/data/img/icon-48.png",
   "author": "Columbia University's Center for Teaching and Learning",
   "engines": {
     "firefox": ">=38.0a1"
