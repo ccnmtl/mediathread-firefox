@@ -14,7 +14,7 @@ var init = function(apikeys) {
     attach(style, tabs.activeTab);
     var worker = tabs.activeTab.attach({
         contentScriptFile: [
-            self.data.url('./lib/jquery-2.2.0.min.js'),
+            self.data.url('./lib/jquery-2.2.3.min.js'),
             self.data.url('./lib/URI.js'),
             self.data.url('./src/collect-panel.js'),
             self.data.url('./src/common/host-handler.js'),
@@ -33,7 +33,7 @@ var init = function(apikeys) {
             contentURL: self.data.url('./collect-popup/index.html'),
             contentStyleFile: self.data.url('./css/popup-base.css'),
             contentScriptFile: [
-                self.data.url('./lib/jquery-2.2.0.min.js'),
+                self.data.url('./lib/jquery-2.2.3.min.js'),
                 self.data.url('./collect-popup/popup.js')
             ]
         });
