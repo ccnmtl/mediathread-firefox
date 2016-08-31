@@ -1,7 +1,7 @@
 {
   "title": "Mediathread",
   "name": "mediathread-firefox",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Find assets to analyze in Mediathread.",
   "main": "src/index.js",
   "icon": "resource://@mediathread-firefox/data/img/icon-48.png",
