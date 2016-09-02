@@ -26,7 +26,7 @@ and uploading it to github.
 
 --
 
-The following instructions aren't really necessary anymore, now that Mozilla's
+The following steps aren't really necessary anymore, now that Mozilla's
 response time for reviewing extensions is a matter of days instead of weeks.
 
 * Change the `name` attribute in `package.json` to
