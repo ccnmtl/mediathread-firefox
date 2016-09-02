@@ -23,6 +23,12 @@ and uploading it to github.
 * Run `make clean && jpm xpi`, and upload the created xpi to
   https://addons.mozilla.org/en-US/developers/addon/mediathread to put
   it in the review queue.
+
+--
+
+The following instructions aren't really necessary anymore, now that Mozilla's
+response time for reviewing extensions is a matter of days instead of weeks.
+
 * Change the `name` attribute in `package.json` to
   "mediathread-firefox-prerelease".
 * Run the `jpm sign --api-key KEY --api-secret SECRET` command. You can get
