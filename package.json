@@ -9,6 +9,9 @@
   "engines": {
     "firefox": ">=38.0a1"
   },
+  "scripts": {
+    "eslint": "eslint data/src/**/*.js"
+  },
   "license": "GPL-2.0+",
   "keywords": [
     "jetpack"
@@ -19,5 +22,8 @@
   },
   "jshintConfig": {
     "moz": true
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0"
   }
 }
