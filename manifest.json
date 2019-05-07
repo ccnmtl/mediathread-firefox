@@ -1,0 +1,31 @@
+{
+    "background": {
+        "scripts": ["src/background.js"]
+    },
+    "browser_action": {
+        "default_icon": "img/icon-128.png",
+        "default_title": "Collect with Mediathread",
+        "browser_style": true
+    },
+    "web_accessible_resources": [
+        "img/*.png",
+        "css/mediathread_collect.css"
+    ],
+    "name": "Mediathread",
+    "description": "Find assets to analyze in Mediathread.",
+    "icons": {
+        "16": "img/icon-16.png",
+        "48": "img/icon-48.png",
+        "128": "img/icon-128.png"
+    },
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "version": "0.9.14",
+    "manifest_version": 2,
+    "options_ui": {
+        "page": "options.html",
+        "browser_style": true
+    }
+}

@@ -6,11 +6,11 @@ Find assets to analyze in Mediathread.
 
 ## Development notes
 
-You will need [jpm](https://www.npmjs.com/package/jpm) and Firefox 38+.
+You can use the [web-ext](https://www.npmjs.com/package/web-ext) tool for development.
 
 To run from source, `cd` into this directory and run:
 
-    jpm run -b `which firefox`
+    web-ext run --verbose
 
 ## Releasing a new version
 
@@ -23,18 +23,3 @@ and uploading it to github.
 * Run `make clean && jpm xpi`, and upload the created xpi to
   https://addons.mozilla.org/en-US/developers/addon/mediathread to put
   it in the review queue.
-
---
-
-The following steps aren't really necessary anymore, now that Mozilla's
-response time for reviewing extensions is a matter of days instead of weeks.
-
-* Change the `name` attribute in `package.json` to
-  "mediathread-firefox-prerelease".
-* Run the `jpm sign --api-key KEY --api-secret SECRET` command. You can get
-  the key and secret strings
-  [here](https://addons.mozilla.org/en-US/developers/addon/api/key/).
-  This will create a signed xpi and upload it to AMO as an "unlisted"
-  extension. Then you'll find a `mediathread-x.x.x-fx.xpi` file in the current
-  directory. Upload this file to the release tag in github -- FF 43+
-  will allow it to be installed.
