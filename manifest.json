@@ -1,18 +1,45 @@
 {
+    "manifest_version": 2,
+    "version": "0.9.14",
+    "name": "Mediathread",
+    "description": "Find assets to analyze in Mediathread.",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "mediathread@columbia.edu",
+            "strict_min_version": "42.0"
+        }
+    },
     "background": {
         "scripts": ["src/background.js"]
     },
     "browser_action": {
-        "default_icon": "img/icon-128.png",
+        "default_icon": {
+            "16": "img/icon-16.png",
+            "48": "img/icon-48.png",
+            "128": "img/icon-128.png"
+        },
         "default_title": "Collect with Mediathread",
         "browser_style": true
     },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": [
+                "lib/jquery-3.4.1.min.js",
+                "lib/URI.js",
+                "src/loadcss.js",
+                "src/collect-popup.js",
+                "src/common/host-handler.js",
+                "src/common/asset-handler.js",
+                "src/common/collect.js",
+                "src/init.js"
+            ]
+        }
+    ],
     "web_accessible_resources": [
         "img/*.png",
         "css/mediathread_collect.css"
     ],
-    "name": "Mediathread",
-    "description": "Find assets to analyze in Mediathread.",
     "icons": {
         "16": "img/icon-16.png",
         "48": "img/icon-48.png",
@@ -22,8 +49,6 @@
         "activeTab",
         "storage"
     ],
-    "version": "0.9.14",
-    "manifest_version": 2,
     "options_ui": {
         "page": "options.html",
         "browser_style": true

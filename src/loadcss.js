@@ -7,3 +7,5 @@ $('head').append(
         .attr('type', 'text/css')
         .attr('href', chrome.extension.getURL('css/mediathread_collect.css'))
 );
+
+undefined;

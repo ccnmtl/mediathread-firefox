@@ -1,5 +1,5 @@
 /* eslint-env jquery */
-/* global chrome, _ */
+/* global browser, _ */
 
 var prefilledUrls = [
     'https://mediathread.ccnmtl.columbia.edu',
@@ -8,9 +8,9 @@ var prefilledUrls = [
 ];
 
 // Restores select box state using the preferences
-// stored in chrome.storage.
+// stored in browser.storage.
 function loadOptions() {
-    chrome.storage.sync.get('options', function(data) {
+    browser.storage.local.get('options', function(data) {
         var options = data.options;
 
         if (typeof options === 'undefined') {
@@ -52,7 +52,7 @@ function loadOptions() {
 
 document.addEventListener('DOMContentLoaded', loadOptions);
 
-// Saves options to chrome.storage.
+// Saves options to browser.storage.
 function storeOptions(hostUrl, customUrl) {
     $('#infospace').hide();
 
@@ -62,7 +62,7 @@ function storeOptions(hostUrl, customUrl) {
         $('input[name="custom_url"]').prop('disabled', true);
     }
 
-    chrome.storage.sync.set({
+    browser.storage.local.set({
         options: {
             hostUrl: hostUrl,
             customUrl: $.trim(customUrl)
