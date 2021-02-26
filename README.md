@@ -1,6 +1,6 @@
 # mediathread-firefox
 
-[![Build Status](https://travis-ci.org/ccnmtl/mediathread-firefox.svg?branch=master)](https://travis-ci.org/ccnmtl/mediathread-firefox)
+[![Actions Status](https://github.com/ccnmtl/mediathread-firefox/workflows/build-and-test/badge.svg)](https://github.com/ccnmtl/mediathread-firefox/actions)
 
 Find assets to analyze in Mediathread.
 
