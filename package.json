@@ -24,6 +24,6 @@
     "moz": true
   },
   "devDependencies": {
-    "eslint": "^4.10.0"
+    "eslint": "^8.38.0"
   }
 }
