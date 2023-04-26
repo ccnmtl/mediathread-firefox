@@ -10,7 +10,7 @@
     "firefox": ">=38.0a1"
   },
   "scripts": {
-    "eslint": "eslint data/src/**/*.js"
+    "eslint": "eslint src/**/*.js"
   },
   "license": "GPL-2.0+",
   "keywords": [
@@ -24,6 +24,6 @@
     "moz": true
   },
   "devDependencies": {
-    "eslint": "^8.38.0"
+    "eslint": "^8.39.0"
   }
 }
